@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog | Bienvenu!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    {% for article in articles %}
+        <div class="card mb-3">
+            <img src="https://picsum.photos/200/50" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">{{article.title}}</h5>
+                <p class="card-text text-capitalize fs-4">{{article.contenu}}.</p>
+                <div class="d-flex">
+                    <p class="card-text fs-6 ">Publier le :{{article.datePublication|date("d/m/y")}}  </p>
+                    &nbsp;<p> by :{{article.user.pseudo}}</p>
+                </div>
+                <p class="badge bg-info ">{{article.cateorie.name}}</p>
+                <div class=" text-right" style="width: 18rem;">
+                    <a href="{{path('app_articleId',{id: article.id})}}" class="btn btn-primary">Lire l'article</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

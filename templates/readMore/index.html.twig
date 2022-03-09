@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{articlesid.title}}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h1>Detail de l'article</h1>
+    <div class="mt-4">
+        
+        <h2 class="mt-2">{{articlesid.title}}</h2>
+            <img src="https://picsum.photos/200/100" class="card-img-top" alt="...">
+        <p class="card-text text-capitalize fs-4 mt-4">{{articlesid.contenu}}.</p>
+        <div class="d-flex">
+            <p class="card-text fs-6 ">Publier le :{{articlesid.datePublication|date("d/m/y")}}  </p>
+            &nbsp;<p> by :{{articlesid.user.pseudo}}</p>
+        </div>
+        <p class="badge bg-info ">{{articlesid.cateorie.name}}</p>
+        <p>Vu par {{articlesid.nombreVues}} personne(s)</p>
+    </div>
+
+    <div class="mt-5">
+        <h3 class="mb-3">Commentaire:</h3><hr>
+        {% if app.user %}
+            {{form(form)}}
+        {% endif %}
+        {% for comment in articlesid.commentaires %}
+            {% if  comment.publie %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <div class="d-flex ">
+                        <img class="rounded-circle" src="https://i.pravatar.cc/50" alt="" >
+                            <h4>{{comment.user.pseudo}}</h4> &nbsp;
+                            <p class="breadcrumb-item">Commenter le :{{comment.publie|date("d/m/y")}} </p>
+                        </div>
+                        <h5 class="mt-2">{{comment.contenu}}</h5>
+                    </div>
+                </div>
+            {% endif %}
+        {% else %}
+            <p>Pas de commentaire pour cet article</p>        
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
