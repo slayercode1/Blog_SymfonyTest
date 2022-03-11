@@ -10,9 +10,9 @@
     <div class="mt-4">
         
         <h2 class="mt-2">{{articlesid.title}}</h2>
-            <img src="https://picsum.photos/200/100" class="card-img-top" alt="...">
-        <p class="card-text text-capitalize fs-4 mt-4">{{articlesid.contenu}}.</p>
-        <div class="d-flex">
+        <img src="{{'/uploads/' ~ articlesid.imageSrc}}" class="card-img-top mb-4" alt="...">
+        {{articlesid.contenu|raw}}
+        <div class="d-flex mt-2">
             <p class="card-text fs-6 ">Publier le :{{articlesid.datePublication|date("d/m/y")}}  </p>
             &nbsp;<p> by :{{articlesid.user.pseudo}}</p>
         </div>
@@ -21,7 +21,9 @@
     </div>
 
     <div class="mt-5">
-        <h3 class="mb-3">Commentaire:</h3><hr>
+    <div class="d-flex">
+    <h3 class="mb-3">Commentaire {{articlesid.commentaires|length}}</h3><hr>
+    </div>
         {% if app.user %}
             {{form(form)}}
         {% endif %}
@@ -30,7 +32,7 @@
                 <div class="card mb-2">
                     <div class="card-body">
                         <div class="d-flex ">
-                        <img class="rounded-circle" src="https://i.pravatar.cc/50" alt="" >
+                        <img class="rounded-circle" src="https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png" alt="" width="50">
                             <h4>{{comment.user.pseudo}}</h4> &nbsp;
                             <p class="breadcrumb-item">Commenter le :{{comment.publie|date("d/m/y")}} </p>
                         </div>

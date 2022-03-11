@@ -1,0 +1,8 @@
+easy_admin:
+    entities:
+          User:
+            class: App\Entity\User
+            form:
+                fields:
+                    - { property: 'roles', label: 'Role', type: choice, type_options: {expanded: 
+                    true, multiple: true, choices: {'user':'ROLES_USER'} }}
