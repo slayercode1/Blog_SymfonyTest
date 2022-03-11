@@ -14,7 +14,23 @@
         {% block javascripts %}
             {# {{ encore_entry_script_tags('app') }} #}
         {% endblock %}
-    </head>
+        <meta name="title" content="Blog | Bienvenu!">
+        <meta name="description" content="Test des symfony 6, blog de test.Non officielle !.">
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://blog6-symfony.herokuapp.com/">
+        <meta property="og:title" content="Blog | Bienvenu!">
+        <meta property="og:description" content="Test des symfony 6, blog de test.Non officielle !.">
+        <meta property="og:image" content="">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://blog6-symfony.herokuapp.com/">
+        <meta property="twitter:title" content="Blog | Bienvenu!">
+        <meta property="twitter:description" content="Test des symfony 6, blog de test.Non officielle !.">
+        <meta property="twitter:image" content="">
+            </head>
     <body>
         {% include('template_parts/_header.html.twig') %}
         {% block body %}{% endblock %}
