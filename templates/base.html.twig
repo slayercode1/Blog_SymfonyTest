@@ -14,6 +14,7 @@
         {% block javascripts %}
             {# {{ encore_entry_script_tags('app') }} #}
         {% endblock %}
+        <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}" type="image/x-icon">
         <meta name="title" content="Blog | Bienvenu!">
         <meta name="description" content="Test des symfony 6, blog de test.Non officielle !.">
 
@@ -22,15 +23,15 @@
         <meta property="og:url" content="https://blog6-symfony.herokuapp.com/">
         <meta property="og:title" content="Blog | Bienvenu!">
         <meta property="og:description" content="Test des symfony 6, blog de test.Non officielle !.">
-        <meta property="og:image" content="">
+        <meta property="og:image" content="/img/logo.png">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://blog6-symfony.herokuapp.com/">
         <meta property="twitter:title" content="Blog | Bienvenu!">
         <meta property="twitter:description" content="Test des symfony 6, blog de test.Non officielle !.">
-        <meta property="twitter:image" content="">
-            </head>
+        <meta property="twitter:image" content="/img/logo.png">
+    </head>
     <body>
         {% include('template_parts/_header.html.twig') %}
         {% block body %}{% endblock %}
