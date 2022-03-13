@@ -8,7 +8,7 @@
     {% for article in articles %}
         <article>
             <h2 class="card-title fw-bold text-capitalize">{{article.title}}</h2>
-            <p class="card-text fs-6 ">Publier le: {{article.datePublication|date("d/m/y")}} de :{{article.user.pseudo}} </p>
+            <p class="card-text fs-6 ">Publier le: {{article.datePublication|date("d/m/y")}} by :{{article.user.pseudo}} </p>
             {{article.contenu|raw}}
             <p class="mt-2"><a href="{{path('app_articleId',{id: article.id})}}" class="btn btn-outline-primary">Lire l'article</a></p>
             <hr class="my-5">
