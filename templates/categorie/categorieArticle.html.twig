@@ -3,27 +3,19 @@
 {% block title %}{{cateArticle.name}}{% endblock %}
 
 {% block body %}
-<div class="container">
+<main class="container">
 
-    <h1>Liste des {{cateArticle.name}} </h1>
+    <h1 class="mb-5">Liste des {{cateArticle.name}} </h1>
     {% for article in cateArticle.articles %}
-        <div class="card mb-3">
-            <img src="{{'/uploads/' ~ article.imageSrc}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">{{article.title}}</h5>
-                <p class="card-text text-capitalize fs-4">{{article.contenu|striptags}}.</p>
-                <div class="d-flex">
-                    <p class="card-text fs-6 ">Publier le :{{article.datePublication|date("d/m/y")}}  </p>
-                    &nbsp;<p> by :{{article.user.pseudo}}</p>
-                </div>
-                <p class="badge bg-info ">{{article.cateorie.name}}</p>
-                <div class=" text-right" style="width: 18rem;">
-                    <a href="{{path('app_articleId',{id: article.id})}}" class="btn btn-primary">Lire l'article</a>
-                </div>
-            </div>
-        </div>
+        <article>
+            <h2 class="card-title fw-bold">{{article.title}}</h2>
+            <p class="card-text fs-6 ">Publier le: {{article.datePublication|date("d/m/y")}} by :{{article.user.pseudo}} </p>
+            {{article.contenu|raw}}
+            <p class="mt-2"><a href="{{path('app_articleId',{id: article.id})}}" class="btn btn-outline-primary">Lire l'article</a></p>
+            <hr class="my-5">
+        </article>
         {% else %}
             <p class="d-flex justify-content-center mt-4" >Pas d'article avec cette categories</p>
     {% endfor %}    
-</div>
+</main>
 {% endblock %}

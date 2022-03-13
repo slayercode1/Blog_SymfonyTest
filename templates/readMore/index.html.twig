@@ -4,11 +4,10 @@
 
 {% block body %}
 
-<div class="container">
+<main class="container">
 
     <h1>Detail de l'article</h1>
-    <div class="mt-4">
-        
+    <article class="mt-4">
         <h2 class="mt-2">{{articlesid.title}}</h2>
         <img src="{{'/uploads/' ~ articlesid.imageSrc}}" class="card-img-top mb-4" alt="...">
         {{articlesid.contenu|raw}}
@@ -18,31 +17,32 @@
         </div>
         <p class="badge bg-info ">{{articlesid.cateorie.name}}</p>
         <p>Vu par {{articlesid.nombreVues}} personne(s)</p>
-    </div>
+    </article>
 
     <div class="mt-5">
     <div class="d-flex">
-    <h3 class="mb-3">Commentaire {{articlesid.commentaires|length}}</h3><hr>
+    <h3 class="mb-5">Commentaire {{articlesid.commentaires|length}}</h3><hr>
     </div>
         {% if app.user %}
             {{form(form)}}
         {% endif %}
         {% for comment in articlesid.commentaires %}
             {% if  comment.publie %}
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <div class="d-flex ">
-                        <img class="rounded-circle" src="https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png" alt="" width="50">
-                            <h4>{{comment.user.pseudo}}</h4> &nbsp;
-                            <p class="breadcrumb-item">Commenter le :{{comment.publie|date("d/m/y")}} </p>
+            <section>
+                <div class="d-flex">
+                    <img class="rounded-circle" src="https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png" alt="" width="50">
+                        <div class="d-flex align-items-center ml-3">
+                            <p class="fw-bold fs-4">{{comment.user.pseudo}}</p> &nbsp;
+                            <p class="breadcrumb-item">Commenter le: {{comment.date|date("d/m/y")}} </p>
                         </div>
-                        <h5 class="mt-2">{{comment.contenu}}</h5>
-                    </div>
                 </div>
+                <h5 class="mt-2 text-muted">{{comment.contenu}}</h5>
+                <hr class="my-5">
+            </section>
             {% endif %}
         {% else %}
             <p>Pas de commentaire pour cet article</p>        
         {% endfor %}
     </div>
-</div>
+</main>
 {% endblock %}

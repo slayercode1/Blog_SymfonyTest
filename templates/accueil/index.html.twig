@@ -4,24 +4,15 @@
 
 {% block body %}
 
-<div class="container">
-
+<main class="container">
     {% for article in articles %}
-        <div class="card mb-3">
-            <img src="{{'/uploads/' ~ article.imageSrc}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">{{article.title}}</h5>
-                {{article.contenu|raw}}
-                <div class="d-flex mt-2">
-                    <p class="card-text fs-6 ">Publier le :{{article.datePublication|date("d/m/y")}}  </p>
-                    &nbsp;<p> by :{{article.user.pseudo}}</p>
-                </div>
-                <p class="badge bg-info ">{{article.cateorie.name}}</p>
-                <div class=" text-right" style="width: 18rem;">
-                    <a href="{{path('app_articleId',{id: article.id})}}" class="btn btn-primary">Lire l'article</a>
-                </div>
-            </div>
-        </div>
+        <article>
+            <h2 class="card-title fw-bold text-capitalize">{{article.title}}</h2>
+            <p class="card-text fs-6 ">Publier le: {{article.datePublication|date("d/m/y")}} by :{{article.user.pseudo}} </p>
+            {{article.contenu|raw}}
+            <p class="mt-2"><a href="{{path('app_articleId',{id: article.id})}}" class="btn btn-outline-primary">Lire l'article</a></p>
+            <hr class="my-5">
+        </article>
     {% endfor %}
-</div>
+</main>
 {% endblock %}

@@ -3,12 +3,12 @@
 {% block title %}Blog | Categories{% endblock %}
 
 {% block body %}
-<div class="container ">
+<main class="container ">
     <h1 class="mb-4">Liste des categories </h1>
     {% for categorie in categories %}
     <a href="{{path('app_categorieArticle',{id: categorie.id})}}">
         <h2 class="fs-4 ">{{categorie.name}}</h2>
     </a>
     {% endfor %}
-</div>
+</main>
 {% endblock %}
